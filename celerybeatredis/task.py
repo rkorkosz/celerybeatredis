@@ -156,7 +156,7 @@ class PeriodicTask(object):
     def jsondump(self):
         # must do a deepcopy using our custom iterator to choose what to save (matching external view)
         self_dict = deepcopy({k: v for k, v in iter(self) if v is not None})
-        logger.info("Dict: {}".format(self._dict))
+        logger.info("Dict: {}".format(self_dict))
         return json.dumps(self_dict, cls=DateTimeEncoder)
 
     def update(self, other):
