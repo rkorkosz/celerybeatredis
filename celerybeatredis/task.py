@@ -136,7 +136,7 @@ class PeriodicTask(object):
                 # task name should always correspond to the key in redis to avoid
                 # issues arising when saving keys - we want to add information to
                 # the current key, not create a new key
-                # logger.warning('json task {0}'.format(dct))
+                logger.warning('json task {0}'.format(dct))
                 yield task_key, dct
             except json.JSONDecodeError:  # handling bad json format by ignoring the task
                 logger.warning('ERROR Reading json task at %s', task_key)
@@ -187,7 +187,6 @@ class PeriodicTask(object):
         schedule Interval / Crontab -> dict
         :return:
         """
-        logger.info("Data: {}".format(self.data))
         return vars(self.data)
 
     def set_schedule(self, schedule):
