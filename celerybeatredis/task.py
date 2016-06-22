@@ -103,7 +103,7 @@ class PeriodicTask(object):
         self.enabled = enabled
 
         # Using schedule property conversion
-        # logger.warn("Schedule in Task init {s}".format(s=schedule))
+        logger.warn("Schedule in Task init {s}".format(s=schedule))
         self.schedule = schedule
 
         self.args = args

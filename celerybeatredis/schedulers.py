@@ -287,7 +287,7 @@ class RedisScheduler(Scheduler):
 
         d = {}
         for key, task in entry_class.get_all_as_dict(self.rdb, key_prefix):
-            # logger.debug('Building {0} from : {1}'.format(entry_class, task))
+            logger.debug('Building {0} from : {1}'.format(entry_class, task))
             d[key] = entry_class(**dict(task, app=self.app))
         return d
 
