@@ -29,7 +29,7 @@ class Interval(object):
     def period_singular(self):
         return self.period[:-1]
 
-    def __unicode__(self):
+    def __str__(self):
         if self.every == 1:
             return 'every {0.period_singular}'.format(self)
         return 'every {0.every} {0.period}'.format(self)
@@ -156,6 +156,7 @@ class PeriodicTask(object):
     def jsondump(self):
         # must do a deepcopy using our custom iterator to choose what to save (matching external view)
         self_dict = deepcopy({k: v for k, v in iter(self) if v is not None})
+        logger.info("Dict: {}".format(self._dict))
         return json.dumps(self_dict, cls=DateTimeEncoder)
 
     def update(self, other):
