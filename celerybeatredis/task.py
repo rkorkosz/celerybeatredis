@@ -6,7 +6,6 @@
 # of the License at http://www.apache.org/licenses/LICENSE-2.0
 import datetime
 from copy import deepcopy
-from redis import StrictRedis
 import celery
 
 try:
@@ -45,8 +44,11 @@ class Crontab(object):
         self.day_of_month = day_of_month or '*'
         self.month_of_year = month_of_year or '*'
 
-    def __unicode__(self):
-        rfield = lambda f: f and str(f).replace(' ', '') or '*'
+    def __str__(self):
+
+        def rfield(f):
+            return f and str(f).replace(' ', '') or '*'
+
         return '{0} {1} {2} {3} {4} (m/h/d/dM/MY)'.format(
             rfield(self.minute), rfield(self.hour), rfield(self.day_of_week),
             rfield(self.day_of_month), rfield(self.month_of_year),
@@ -175,7 +177,7 @@ class PeriodicTask(object):
             self.kwargs, self.options, self.schedule,
         )
 
-    def __unicode__(self):
+    def __str__(self):
         fmt = '{0.name}: {0.schedule}'
         return fmt.format(self)
 
