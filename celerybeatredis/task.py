@@ -187,6 +187,7 @@ class PeriodicTask(object):
         schedule Interval / Crontab -> dict
         :return:
         """
+        logger.info("Data: {}".format(self.data))
         return vars(self.data)
 
     def set_schedule(self, schedule):
