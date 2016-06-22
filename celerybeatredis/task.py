@@ -224,7 +224,7 @@ class PeriodicTask(object):
         => rdb is hidden
         :return:
         """
-        for k, v in vars(self).iteritems():
+        for k, v in vars(self).items():
             if k == 'data':
                 yield 'schedule', self.schedule
             else:  # we can expose everything else
