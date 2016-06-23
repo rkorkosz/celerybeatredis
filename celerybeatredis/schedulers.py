@@ -275,7 +275,7 @@ class RedisScheduler(Scheduler):
             raise
 
         # displaying the schedule we got from redis
-        logger.debug("DB schedule : {0}".format(self.schedule))
+        # logger.debug("DB schedule : {0}".format(self.schedule))
 
         # this will call self.maybe_due() to check if any entry is due.
         return super(RedisScheduler, self).tick()

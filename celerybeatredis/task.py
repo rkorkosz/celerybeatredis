@@ -131,6 +131,7 @@ class PeriodicTask(object):
 
         tasks = rdb.keys(key_prefix + '*')
         for task_key in tasks:
+            logger.info("Task key: {}".format(task_key))
             try:
                 dct = json.loads(bytes_to_str(rdb.get(task_key)), cls=DateTimeDecoder, encoding=default_encoding)
                 # task name should always correspond to the key in redis to avoid
