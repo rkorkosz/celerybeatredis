@@ -48,5 +48,7 @@ class DateTimeEncoder(json.JSONEncoder):
                 'second': obj.second,
                 'microsecond': obj.microsecond,
             }
+        if isinstance(obj, bytes):
+            return obj.decode("utf-8")
         else:
             return json.JSONEncoder.default(self, obj)
